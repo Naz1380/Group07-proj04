@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            font-family: 'Playfair Display', serif;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('header-pattern.png'); 
+            opacity: 0.2;
+            z-index: -1;
+        }
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            font-family: 'Playfair Display', serif;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .author-card {
+            background-color: #f9f7f7;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .author-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .author-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .author-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            color: #fff;
+            text-align: center;
+        }
+
+        .overlay-content p {
+            margin: 0;
+        }
+
+        .bio {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Meet the Authors</h1>
+    </header>
+    
+    <main>
+        <section>
+            <div class="author-card">
+                <img src="nazanin.JPG" alt="Nazanin Mahmoudi" class="author-img">
+                <h2 class="author-name">Nazanin Mahmoudi</h2>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Contact Nazanin</p>
+                    </div>
+                </div>
+                <div class="bio">
+                    <p>Bio: As a developer, I am passionate about creating web and mobile applications. My goal is to transition into software development. I find todo list and notes apps incredibly useful for organizing my school work, and I aim to develop a web app that not only helps me but also provides value to other users seeking organization and productivity tools.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section>
+            <div class="author-card">
+                <img src="maarji.jpg" alt="Maarji Razzaq" class="author-img">
+                <h2 class="author-name">Maarji Razzaq</h2>
+            
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Contact Maarji</p>
+                    </div>
+                </div>
+                <div class="bio">
+                    <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis lacus vel lacus congue, ac tincidunt turpis faucibus.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="author-card">
+                <img src="ahmad.jpg" alt="Ahmad Shah" class="author-img">
+                <h2 class="author-name">Ahmad Shah</h2>
+         
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Contact Ahmad</p>
+                    </div>
+                </div>
+                <div class="bio">
+                    <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis lacus vel lacus congue, ac tincidunt turpis faucibus.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="author-card">
+                <img src="talal.jpg" alt="Talal H" class="author-img">
+                <h2 class="author-name">Talal H</h2>
+              
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <p>Contact Talal</p>
+                    </div>
+                </div>
+                <div class="bio">
+                    <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sagittis lacus vel lacus congue, ac tincidunt turpis faucibus.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ToDo List App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

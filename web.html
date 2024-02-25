@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ToDo List</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background1.webp');
+            background-size: cover;
+            color: #333;
+        }
+
+        header h1 {
+            font-size: 36px;
+            letter-spacing: 4px; 
+            margin-bottom: 20px; 
+            color: #F0E68C; 
+        }
+
+        header {
+            background: linear-gradient(to right, #004d00, #006400); 
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: linear-gradient(to right, #004d00, #006400); 
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        section:hover {
+            transform: translateY(-3px); 
+        }
+
+        h1, h2 {
+            margin-top: 0;
+            font-weight: bold;
+            font-size: 24px;
+            color: #8B4513;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        li input[type=checkbox] {
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+        }
+
+        li label {
+            display: inline-block;
+            vertical-align: middle;
+            width: calc(100% - 30px);
+        }
+
+        li label.completed {
+            text-decoration: line-through;
+            color: #777;
+        }
+
+        li .priority {
+            margin-left: auto;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        li .priority.high {
+            background-color: #ffcccc;
+        }
+
+        li .priority.medium {
+            background-color: #ffeba8;
+        }
+
+        li .priority.low {
+            background-color: #b3f0c2;
+        }
+
+        li .edit-btn {
+            margin-left: 10px;
+            padding: 4px 8px;
+            background-color: #2e8b57;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        li .edit-btn:hover {
+            background-color: #006400;
+        }
+
+        footer {
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .navigation-list {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation-item {
+            margin: 0 10px;
+        }
+
+        .navigation-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #2e8b57;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation-link:hover {
+            background-color: #2e8b57;
+            color: #fff;
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .progress-icon {
+            color: #2e8b57;
+        }
+
+        .navigation-icon {
+            color: #4bd88b;
+        }
+
+        section p {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #createTaskSection {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button.btn-create {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button.btn-create:hover {
+            background-color: #45a049;
+        }
+
+        button.btn-create:active {
+            background-color: #3e8e41;
+        }
+
+        li label.completed {
+            text-decoration: line-through;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <h1><span class="icon progress-icon">&#128202;</span> ToDo List</h1> 
+</header>
+
+<main>
+    <section>
+        <h2><span class="icon progress-icon">&#128202;</span> Project Progress</h2>
+        <p>The ToDo List is a web application designed to help users manage their tasks effectively.</p>
+        <p class="bold-text">Current Features:</p>
+        <ul>
+            <li>
+                <input type="checkbox" id="task1">
+                <label for="task1">Create tasks with descriptions, due dates, categories, and priority levels.</label>
+                <span class="priority high">High</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task2">
+                <label for="task2">Mark tasks as completed.</label>
+                <span class="priority medium">Medium</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task3">
+                <label for="task3">Create task categories and subcategories.</label>
+                <span class="priority low">Low</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task4">
+                <label for="task4">Edit categories and subcategories.</label>
+                <span class="priority high">High</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+        </ul>
+        <p class="bold-text">Upcoming Features:</p>
+        <ul>
+            <li>
+                <input type="checkbox" id="task5">
+                <label for="task5">User authentication to allow multiple users to manage their tasks independently.</label>
+                <span class="priority medium">Medium</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task6">
+                <label for="task6">Enhanced sorting and filtering options for tasks.</label>
+                <span class="priority low">Low</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+            <li>
+                <input type="checkbox" id="task7">
+                <label for="task7">Integration with external calendars or notification systems.</label>
+                <span class="priority high">High</span>
+                <button class="edit-btn">Edit</button>
+            </li>
+        </ul>
+        <p>We are continuously working on improving the app and adding new features to enhance user experience.</p>
+    </section>
+    <!-- Just tasks for now, they are not functional but working to make them functional within the next few weeks-->
+    <section id="createTaskSection">
+        <h2>Create Task</h2>
+        <form id="taskForm">
+            <div class="input-group">
+                <label for="taskDescription">Task Description:</label><br>
+                <input type="text" id="taskDescription" name="taskDescription" required>
+            </div>
+
+            <div class="input-group">
+                <label for="dueDate">Due Date:</label><br>
+                <input type="date" id="dueDate" name="dueDate" required>
+            </div>
+
+            <div class="input-group">
+                <label for="category">Category:</label><br>
+                <input type="text" id="category" name="category">
+            </div>
+
+            <div class="input-group">
+                <label for="priority">Priority:</label><br>
+                <select id="priority" name="priority">
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-create">Create Task</button>
+        </form>
+    </section>
+    <section>
+        <h2><span class="icon navigation-icon">&#128506;</span> Navigation</h2> 
+        <ul class="navigation-list">
+            <li class="navigation-item"><a href="authors.html" class="navigation-link">Authors Page</a></li>
+        </ul>
+    </section>
+    <!-- 
+       <section>
+        <h2>Categories</h2>
+        <form id="categoryForm">
+            <label for="categoryName">Category Name:</label>
+            <input type="text" id="categoryName" name="categoryName" required><br>
+            <label for="parentCategory">Parent Category:</label>
+            <select id="parentCategory" name="parentCategory">
+                <option value="">None</option>
+              
+            </select><br>
+            <button type="submit">Add Category</button>
+        </form>
+    </section>>
+    -->
+    <section>
+        <h2>Functionalities</h2>
+        <ol>
+            <li>Current user can create tasks.</li>
+            <li>Current user can mark a task as completed.</li>
+            <li>Current user can create categories.</li>
+            <li>Current user can edit categories (and subcategories).</li>
+            <li>A category may have a parent category. A category with a parent category is called a subcategory.</li>
+        </ol>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 ToDo List App. All rights reserved.</p>
+</footer>
+<div id="editTaskModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Edit Task</h2>
+        <label for="taskName">Task Name:</label>
+        <input type="text" id="taskName" name="taskName" required><br>
+        
+        <button id="saveTaskBtn">Save Changes</button>
+        <button id="cancelEditBtn">Cancel</button>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('taskForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var taskDescription = document.getElementById('taskDescription').value;
+            var dueDate = document.getElementById('dueDate').value;
+            var category = document.getElementById('category').value;
+            var priority = document.getElementById('priority').value;
+            var task = {
+                description: taskDescription,
+                dueDate: dueDate,
+                category: category,
+                priority: priority
+            };
+            addTaskToList(task);
+            document.getElementById('taskForm').reset();
+        });
+
+        function addTaskToList(task) {
+            var taskItem = document.createElement('li');
+            taskItem.innerHTML = `
+                <input type="checkbox" id="task${taskId}">
+                <label for="task${taskId}">${task.description}</label>
+                <span class="priority">${task.priority}</span>
+                <button class="edit-btn">Edit</button>
+            `;
+            var taskList = document.getElementById('taskList');
+            taskList.appendChild(taskItem);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        function handleTaskCompletion(event) {
+            var checkbox = event.target;
+            var taskDescription = checkbox.parentElement.querySelector('label').innerText;
+            if (checkbox.checked) {
+                console.log('Task completed:', taskDescription);
+                checkbox.parentElement.querySelector('label').classLisst.add('completed');
+            } else {
+                console.log('Task marked as incomplete:', taskDescription);
+                checkbox.parentElement.querySelector('label').classList.remove('completed');
+            }
+        }
+        document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) {
+            checkbox.addEventListener('change', handleTaskCompletion);
+        });
+    });
+</script>
+</body>
+</html>
